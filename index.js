@@ -5,16 +5,16 @@ const database =xBlog.database
 
 // 定义字段
 const dbComment = "comment"
-const keyNotice = "tool_notice"
+const keyCommentNum = "comment_num"
 
 // 添加卡片
-widget.addSide(false,"更多功能","index.html",function () {
+widget.addSide(false,"最近评论","index.html",function () {
     let db = database.newDb(dbComment)
     let comments = []
     db.FindMany({
         sort: { "_id":-1 },
         filter: { "agree": 1 },
-        limit: 5
+        limit: tools.getSetting(keyCommentNum)
     },function (err, data) {
         data.forEach(function (item) {
             comments.push({
@@ -36,3 +36,8 @@ widget.addSide(false,"更多功能","index.html",function () {
         comments
     }
 },true)
+
+// 添加设置信息
+widget.addSetting("最近评论设置",1,tools.getAdminPluginSetting([
+    {title:"最近评论显示个数",type: "number",key: keyCommentNum}
+]))
