@@ -8,7 +8,7 @@ const dbComment = "comment"
 const keyCommentNum = "comment_num"
 
 // 添加卡片
-widget.addSide(false,"最近评论","index.html",function () {
+widget.addSide("最近评论","index.html",function () {
     let db = database.newDb(dbComment)
     let comments = []
     db.FindMany({
