@@ -38,6 +38,6 @@ widget.addSide("最近评论","index.html",function () {
 },true)
 
 // 添加设置信息
-widget.addSetting("最近评论设置",1,tools.getAdminPluginSetting([
+widget.addSetting("最近评论设置",1,[
     {title:"最近评论显示个数",type: "number",key: keyCommentNum}
-]))
+])
